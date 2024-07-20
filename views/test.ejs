@@ -1,0 +1,723 @@
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+
+    <style>
+        
+        body {
+    		overflow-x: hidden;
+			position: relative;
+            font-family: 'Cairo';
+	margin: 10;
+	/*color: hsl(217 57% 45%);*/
+	background: hsl(217 57% 40%);
+	background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200">\
+    <pattern id="p" patternUnits="userSpaceOnUse" width="50" height="10" viewBox="0 0 50 10">\
+        <path id="s" fill="none" stroke="hsl(217 60% 38%)" stroke-width="1" d="M 0 2.5 C 7.5 2.5 17.5 -2.5 25 -2.5 C 32.5 -2.5 42.5 2.5 50 2.5" />\
+        <use href="%23s" y="5" />\
+        <use href="%23s" y="10" />\
+    </pattern>\
+    <rect width="400" height="200" fill="url(%23p)" />\
+</svg>');
+}
+
+
+canvas {
+	display: block;
+	inline-size: 100%;
+	max-inline-size: 400px;
+}
+
+/* CSS */
+.button-54 {
+  font-family: "Cairo";
+  font-weight: 800;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
+  border: 3px solid;
+  padding: 0.25em 0.5em;
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-54:active {
+  box-shadow: 0px 0px 0px 0px;
+  top: 5px;
+  left: 5px;
+}
+
+@media (min-width: 768px) {
+  .button-54 {
+    padding: 0.25em 0.75em;
+  }
+}
+
+/* CSS */
+.button-19 {
+  appearance: button;
+  background-color: #1899D6;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: din-round,sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  overflow: visible;
+  padding: 13px 16px;
+  text-align: center;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  transform: translateZ(0);
+  transition: filter .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.button-19:after {
+  background-clip: padding-box;
+  background-color: #1CB0F6;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  bottom: -4px;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.button-19:main,
+.button-19:focus {
+  user-select: auto;
+}
+
+.button-19:hover:not(:disabled) {
+  filter: brightness(1.1);
+  -webkit-filter: brightness(1.1);
+}
+
+.button-19:disabled {
+  cursor: auto;
+}
+
+.button-19:active {
+  border-width: 4px 0 0;
+  background: none;
+}
+.button-54{
+	margin-bottom: 10px;
+}
+#content{
+    display: flex;
+    width:100%;
+    justify-content:center;
+	flex-direction: column;
+	width: 50%;
+	margin: auto;
+}
+h1{
+    margin:0;
+    padding:0;
+    line-height: 10px;
+}
+.header{
+    font-size: 25px;
+    color: hsl(180 6% 94%);
+	text-align:center;
+}
+.invitationHeader{
+    color: hsl(48 85% 61%);
+    color: hsl(180 6% 94%);
+    font-size: 40px;
+}
+button{
+    margin-left:5px;
+    margin-right:5px;
+}
+.ourPicture{
+	width: 200px;
+	border-radius:10%;
+	margin: auto;
+	margin-bottom: 10px;
+}
+.popup{
+            width:500px;
+            height:250px;
+            background-color: #f3f3f3;
+            position: absolute; 
+            top:30%;
+			right:0;
+			left: 0;
+            margin-left: auto; 
+            margin-right: auto; 
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+			display: none;
+			opacity: 0.9;
+        }
+		#container{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+		.canvas{
+			text-align: center;
+			margin: auto;
+		}
+
+.popupContent{
+	display: none;
+}
+.active{
+	display: block;
+}
+#closePopup{
+	margin-top: 50px;
+}
+    </style>
+</head>
+<body dir='rtl'>
+<div id='container'>
+
+<img src='/us.jpeg' class='ourPicture'/>
+<h1 class='header'> مستنينك في كتب كتابنا يوم واحد و عشرين يوليو يا <%= data.arabicName %> <i class="icon-heart"></i> </h1>
+<canvas width="400" height="200" class='canvas'>
+</canvas>
+<div id='content'>
+<!--
+    <button class='button-54' id='openFirstPopup'> دوس هنا دي رسالة ليك <i class="icon-envelope"></i></button>
+ -->   
+	<button class='button-54' id='openSecondPopup'> دوس هنا عشان العنوان <i class="icon-map-marker"></i></button>
+    <button class='button-54' id='openThirdPopup'> دوس هنا عشان تسيبلنا رسالة <i class="icon-camera-retro"></i></button>
+</div>
+</div>
+
+<div id='popup' class='popup'>
+	<!--
+	<div class='popupContent active' id='first'>
+		<h2 style='margin-bottom: 20px;'>رسالة <%=data.arabicName%> <i class="icon-heart"></i></h2>
+		<h5> <%= data.message %> </h5>
+	</div>
+	-->
+	<div class='popupContent' id='second'>
+		<h2 style='margin-bottom: 20px;'>العنوان <i class="icon-map-marker"></i></h2>
+		<h5>يخت الأمير 1 - بحري - قدام قسم الأنفوشي - الإسكندرية</h5>
+		<h5> يوم 21 يوليو الساعة 4 العصر بالظبط عشان متجيش عوم <i class='icon-heart'></i> </h5>
+		<h5><a target="_blank" href='https://www.google.com/maps/place/Al-Anfoushi+Police+Station/@31.2101839,29.8818265,15z/data=!4m6!3m5!1s0x14f5c3fdf74ab115:0x3914e85bd98291ac!8m2!3d31.2101839!4d29.8818265!16s%2Fg%2F11c43qwnbg?entry=ttu'>
+		اللوكيشن <i class="icon-map-marker"></i>
+		</a>
+		</h5>
+
+	</div>
+	<div class='popupContent' id='third'>
+		<form onSubmit='return send()'>
+			<label>رسالتك</label>
+			<textarea id='message' placeholder="اكتب رسالتك هنا" style="width:400px;"></textarea>
+    		<button class='button-54' id='sendMessage' onClick='return send()'> ابعت <i class="icon-heart"></i></button>
+		</form>
+	</div>
+    <button class='button-54' id='closePopup'>دوس هنا عشان تقفل</button>
+</div>
+
+<script src="https://unpkg.com/zdog@1/dist/zdog.dist.min.js"></script>
+<script>
+	/*
+	document.getElementById('openFirstPopup').addEventListener('click', async function () {
+        document.getElementById('popup').style.display='block';
+        //document.getElementById('first').classList.add('active');
+        document.getElementById('second').classList.remove('active');
+        document.getElementById('third').classList.remove('active');
+    });
+	*/
+	document.getElementById('openSecondPopup').addEventListener('click', async function () {
+        document.getElementById('popup').style.display='block';
+        //document.getElementById('first').classList.remove('active');
+        document.getElementById('second').classList.add('active');
+        document.getElementById('third').classList.remove('active');
+    });
+	document.getElementById('openThirdPopup').addEventListener('click', async function () {
+        document.getElementById('popup').style.display='block';
+        //document.getElementById('first').classList.remove('active');
+        document.getElementById('second').classList.remove('active');
+        document.getElementById('third').classList.add('active');
+    });
+	document.getElementById('closePopup').addEventListener('click', async function () {
+        document.getElementById('popup').style.display='none';
+    });
+	function send(){
+		let message = document.getElementById('message').value;
+		console.log(window.location.href.split('/').slice(-1));
+        let reqBody = {message: message, data: '<%=JSON.stringify(data)%>', sender: window.location.href.split('/').slice(-1)[0]}
+		var myHeaders = new Headers();
+		myHeaders.append('Content-Type', 'application/json');
+		fetch('/api/send_message',{
+			method: "POST",
+			mode: "cors",
+			cache: "no-cache",
+			credentials: "same-origin",
+			headers: myHeaders,
+			redirect: "follow",
+			referrerPolicy: "no-referrer",
+			body: JSON.stringify(reqBody),
+		})
+		.then(response =>{
+			if(response.status != 200){
+				throw new Error("رسالتك موصلتش, حاول تاني معلش");
+			}
+			return response;
+		})
+		.then(data => {
+				alert("رسالتك وصلت!");
+		})
+		.catch(error => {
+			if(error.message == 'noPermissions'){
+				alert("You are not permitted!");
+			}
+			else{
+				alert("رسالتك موصلتش, حاول تاني معلش");
+			}
+		});
+		return false;
+	}
+</script>
+<script>
+    const { Anchor, Shape, Ellipse, RoundedRect, TAU, easeInOut } = Zdog;
+
+(() => {
+	const stroke = 0.2;
+	const offsets = [1, 2, 3];
+	const depth = 10;
+	const z = depth * -1;
+
+	const cruiserOffset = -5;
+	const cruiserAngle = TAU / 30;
+
+	const streamsOffset = 16;
+	const streamsSpeed = 0.05;
+	const streamsOffsets = Array(4)
+		.fill()
+		.map((_, i, { length }) => (streamsOffset / length) * i);
+	const streamsScale = (offset) => (streamsOffset - offset) / streamsOffset;
+
+	const puffsOffset = -12;
+	const puffsSpeed = 0.05;
+	const puffsOffsets = Array(3)
+		.fill()
+		.map((_, i, { length }) => (puffsOffset / length) * i);
+
+	const puffsOffsetX = (offset) =>
+		easeInOut(1 - (puffsOffset - offset) / puffsOffset) * 8;
+	const puffsStroke = (offset) => ((puffsOffset - offset) / puffsOffset) * 4;
+
+	const colors = {
+		sea: "hsl(217 57% 45%)",
+		stream: "hsl(214 50% 51%)",
+		hull: "hsl(180 6% 94%)",
+		deck: "hsl(48 85% 61%)",
+		cabin: "hsl(180 6% 94%)",
+		chinmey: "hsl(180 6% 94%)",
+		exhaust: "hsl(48 85% 61%)",
+		windows: "hsl(245 12% 37%)",
+		puffs: "hsl(225 100% 99%)"
+	};
+
+	const root = new Anchor();
+
+	const streams = new Anchor({
+		addTo: root,
+		translate: {
+			x: 7,
+			y: 9,
+			z: z / 2 - 0.5
+		}
+	});
+
+	const stream = new Shape({
+		color: colors.stream,
+		stroke: 2,
+		path: [{ z: depth / 2 }, { z: (depth / 2) * -1 }]
+	});
+
+	for (const offset of streamsOffsets) {
+		stream.copy({
+			addTo: streams,
+			translate: {
+				x: offset
+			},
+			scale: {
+				z: streamsScale(offset)
+			}
+		});
+	}
+
+	const hull = new Shape({
+		addTo: root,
+		color: colors.hull,
+		stroke,
+		fill: true,
+		path: [
+			{ x: 13.5, y: 2.5 },
+			{
+				arc: [
+					{ x: 13.5, y: 10 },
+					{ x: 6, y: 10 }
+				]
+			},
+			{ x: -6, y: 10 },
+			{
+				arc: [
+					{ x: -13.5, y: 10 },
+					{ x: -13.5, y: 2.5 }
+				]
+			}
+		]
+	});
+
+	const deck = new Shape({
+		addTo: root,
+		color: colors.deck,
+		stroke,
+		fill: true,
+		path: [
+			{ x: 3, y: 0 },
+			{ x: 11, y: 0 },
+			{
+				arc: [
+					{ x: 13.5, y: 0 },
+					{ x: 13.5, y: 2.5 }
+				]
+			},
+			{ x: -13.5, y: 2.5 },
+			{ x: -13.5, y: -2.5 },
+			{
+				arc: [
+					{ x: -13.5, y: -5 },
+					{ x: -11, y: -5 }
+				]
+			},
+			{ x: -8, y: -5 },
+			{
+				bezier: [
+					{ x: -2, y: -5 },
+					{ x: -2, y: 0 },
+					{ x: 3, y: 0 }
+				]
+			}
+		]
+	});
+
+	const obloo = new Ellipse({
+		diameter: 2,
+		color: colors.windows,
+		stroke: 1,
+		fill: true
+	});
+
+	for (const x of [-10, -5]) {
+		obloo.copy({
+			addTo: root,
+			translate: {
+				x,
+				y: -1,
+				z: offsets[2]
+			}
+		});
+	}
+
+	const cabin = new Shape({
+		addTo: root,
+		color: colors.cabin,
+		stroke,
+		fill: true,
+		path: [
+			{ x: -8, y: -5 },
+			{ x: -8, y: -9 },
+			{
+				arc: [
+					{ x: -8, y: -11.5 },
+					{ x: -5.5, y: -11.5 }
+				]
+			},
+			{ x: 1.5, y: -11.5 },
+			{
+				arc: [
+					{ x: 3, y: -11.5 },
+					{ x: 3, y: -9 }
+				]
+			},
+			{ x: 3, y: 0 },
+			{
+				bezier: [
+					{ x: -2, y: 0 },
+					{ x: -2, y: -5 },
+					{ x: -8, y: -5 }
+				]
+			}
+		]
+	});
+
+	const window = new RoundedRect({
+		color: colors.windows,
+		stroke: 1,
+		fill: true,
+		width: 2.5,
+		height: 2.5,
+		cornerRadius: 0.5
+	});
+
+	for (const [x, y] of [
+		[-4.5, -8],
+		[-0.5, -8]
+	]) {
+		window.copy({
+			addTo: root,
+			translate: {
+				x,
+				y,
+				z: offsets[0]
+			}
+		});
+	}
+
+	const chimney = new Shape({
+		addTo: root,
+		color: colors.chinmey,
+		stroke,
+		fill: true,
+		path: [
+			{ x: 4.5, y: 0 },
+			{ x: 4.5, y: -8 },
+			{ x: 9.5, y: -8 },
+			{ x: 11, y: 0 }
+		]
+	});
+
+	const exhaust = new Shape({
+		addTo: root,
+		color: colors.exhaust,
+		stroke,
+		fill: true,
+		path: [
+			{ x: 4.5, y: -8 },
+			{ x: 4.5, y: -9.5 },
+			{ x: 9.5, y: -9.5 },
+			{ x: 9.5, y: -8 }
+		]
+	});
+
+	const puffs = new Anchor({
+		addTo: root,
+		translate: {
+			x: 7,
+			y: -12,
+			z: z / 2
+		}
+	});
+
+	for (const offset of puffsOffsets) {
+		const x = puffsOffsetX(offset);
+		new Shape({
+			addTo: puffs,
+			stroke: puffsStroke(offset),
+			color: colors.puffs,
+			translate: {
+				x,
+				y: offset
+			}
+		});
+	}
+
+	for (const shape of [hull, deck, cabin, chimney, exhaust]) {
+		const { color, stroke, fill, path } = shape;
+		const [h, s, l] = color.match(/\d+/g);
+		const colorShadow = `hsl(${h} ${s}% ${parseFloat(l) * 0.8}%)`;
+
+		for (let i = 0; i < path.length; i++) {
+			let pathShadow = [];
+			const p1 = path[i];
+			const p2 = path[(i + 1) % path.length];
+
+			const p1Bezier = Object.hasOwn(p1, "bezier");
+			const p2Bezier = Object.hasOwn(p2, "bezier");
+			const p1Arc = Object.hasOwn(p1, "arc");
+			const p2Arc = Object.hasOwn(p2, "arc");
+
+			const { x: x1, y: y1 } = p1Bezier ? p1.bezier[2] : p1Arc ? p1.arc[1] : p1;
+
+			if (p2Bezier) {
+				const { x: xc1, y: yc1 } = p2.bezier[0];
+				const { x: xc2, y: yc2 } = p2.bezier[1];
+				const { x: x2, y: y2 } = p2.bezier[2];
+
+				pathShadow = [
+					{ x: x1, y: y1, z: 0 },
+					{ x: x1, y: y1, z },
+					{
+						bezier: [
+							{ x: xc1, y: yc1, z },
+							{ x: xc2, y: yc2, z },
+							{ x: x2, y: y2, z }
+						]
+					},
+					{ x: x2, y: y2, z: 0 },
+					{
+						bezier: [
+							{ x: xc2, y: yc2, z: 0 },
+							{ x: xc1, y: yc1, z: 0 },
+							{ x: x1, y: y1, z: 0 }
+						]
+					}
+				];
+			} else if (p2Arc) {
+				const { x: xc, y: yc } = p2.arc[0];
+				const { x: x2, y: y2 } = p2.arc[1];
+
+				pathShadow = [
+					{ x: x1, y: y1, z: 0 },
+					{ x: x1, y: y1, z },
+					{
+						arc: [
+							{ x: xc, y: yc, z },
+							{ x: x2, y: y2, z }
+						]
+					},
+					{ x: x2, y: y2, z: 0 },
+					{
+						arc: [
+							{ x: xc, y: yc, z: 0 },
+							{ x: x1, y: y1, z: 0 }
+						]
+					}
+				];
+			} else {
+				const { x: x2, y: y2 } = p2;
+
+				pathShadow = [
+					{ x: x1, y: y1, z: 0 },
+					{ x: x1, y: y1, z },
+					{ x: x2, y: y2, z },
+					{ x: x2, y: y2, z: 0 }
+				];
+			}
+
+			new Shape({
+				addTo: shape,
+				color: colorShadow,
+				stroke,
+				fill,
+				path: pathShadow
+			});
+		}
+	}
+
+	const element = document.querySelector("canvas");
+	const { width, height } = element;
+	const context = element.getContext("2d");
+	const zoom = 6;
+
+	context.lineCap = "round";
+	context.lineJoin = "round";
+
+	const render = () => {
+		context.clearRect(0, 0, width, height);
+		context.save();
+		context.translate(width / 2, height / 2);
+		context.scale(zoom, zoom);
+		root.renderGraphCanvas(context);
+		context.restore();
+	};
+
+	root.translate.y = 4;
+	root.rotate.x = (TAU / 8) * -1;
+
+	root.updateGraph();
+	render();
+
+	let frame = null;
+	let ticker = 0;
+	let direction = 1;
+	const cycle = 1000;
+
+	const animate = () => {
+		for (const stream of streams.children) {
+			stream.translate.x += streamsSpeed;
+			if (stream.translate.x >= streamsOffset) {
+				stream.translate.x = 0;
+			}
+			stream.scale.z = streamsScale(stream.translate.x);
+		}
+
+		for (const puff of puffs.children) {
+			puff.translate.y -= puffsSpeed;
+			if (puff.translate.y <= puffsOffset) {
+				puff.translate.y = 0;
+			}
+			puff.stroke = puffsStroke(puff.translate.y);
+			puff.translate.x = puffsOffsetX(puff.translate.y);
+		}
+
+		ticker += direction;
+		if (ticker >= cycle) {
+			ticker = cycle;
+			direction = -1;
+		} else if (ticker <= 0) {
+			ticker = 0;
+			direction = 1;
+		}
+
+		const ease = easeInOut(ticker / cycle, 3);
+		root.translate.x = cruiserOffset * ease;
+		root.rotate.y = cruiserAngle * ease;
+
+		root.updateGraph();
+		render();
+
+		frame = requestAnimationFrame(animate);
+	};
+
+	const listener = (e) => {
+		if (e.matches) {
+			cancelAnimationFrame(frame);
+		} else {
+			frame = requestAnimationFrame(animate);
+		}
+	};
+
+	const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
+
+	if (!reducedMotion.matches) {
+		frame = requestAnimationFrame(animate);
+	}
+
+	reducedMotion.addEventListener("change", listener);
+})();
+
+
+    </script>
+
+</body>
